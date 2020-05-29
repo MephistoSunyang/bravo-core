@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ExceptionModule } from './exception';
+import { InterceptorModule } from './interceptor';
 
-const modules = [ExceptionModule];
+const modules = [ExceptionModule, InterceptorModule];
 
 @Module({
   imports: [...modules],
