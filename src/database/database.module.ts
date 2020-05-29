@@ -6,9 +6,12 @@ import { Connection } from 'typeorm';
 @Global()
 @Module({})
 export class DataBaseModule implements OnModuleInit {
+  public static synchronize = false;
+
   constructor(@InjectConnection() private readonly connection: Connection) {}
 
   public static forRoot(options: TypeOrmModuleOptions): DynamicModule {
+    this.synchronize = options.synchronize || false;
     const modules = [TypeOrmModule.forRoot(options)];
     return {
       module: DataBaseModule,
@@ -17,8 +20,7 @@ export class DataBaseModule implements OnModuleInit {
   }
 
   public async onModuleInit(): Promise<void> {
-    const databaseSynchronize = process.env.DATABASE_SYNCHRONIZE === 'true';
-    if (databaseSynchronize) {
+    if (DataBaseModule.synchronize) {
       const { driver, entityMetadatas } = this.connection;
       const queryRunner = driver.createQueryRunner('master');
       const databaseSchemas = await queryRunner.getSchemas();
