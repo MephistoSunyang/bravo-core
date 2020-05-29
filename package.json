@@ -2,12 +2,11 @@
   "name": "bravo-core",
   "version": "1.0.0",
   "description": "bravo core package",
-  "main": "dist/app.js",
+  "main": "./index.js",
   "scripts": {
-    "start": "node dist/main.js",
     "compile": "npm run clean && npm run build",
-    "clean": "rimraf dist",
-    "build": "tsc -p tsconfig.build.json",
+    "clean": "rimraf build",
+    "build": "tsc -p tsconfig.json",
     "tslint": "tslint --project tsconfig.json --config tslint.json --type-check --force",
     "commitlint": "validate-commit-msg",
     "fix": "tslint --project tsconfig.json --fix --force"

@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
-    "outDir": "dist",
+    "declaration": true,
+    "outDir": "build/package",
     "removeComments": true,
     "strict": true,
     "noImplicitAny": false,
