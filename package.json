@@ -24,10 +24,13 @@
   "homepage": "https://github.com/MephistoSunyang/bravo-seed#readme",
   "dependencies": {
     "@nestjs/common": "^7.1.1",
+    "@nestjs/core": "^7.1.1",
     "@nestjs/typeorm": "^7.1.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "typeorm": "file:packages/typeorm"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.153",
     "@types/node": "^14.0.5",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
