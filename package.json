@@ -1,0 +1,42 @@
+{
+  "name": "bravo-seed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "compile": "npm run clean && npm run build",
+    "clean": "rimraf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "tslint": "tslint --project tsconfig.json --config tslint.json --type-check --force",
+    "commitlint": "validate-commit-msg",
+    "fix": "tslint --project tsconfig.json --fix --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MephistoSunyang/bravo-seed.git"
+  },
+  "author": "Adis.Sun <sunyang08@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MephistoSunyang/bravo-seed/issues"
+  },
+  "homepage": "https://github.com/MephistoSunyang/bravo-seed#readme",
+  "dependencies": {
+    "@nestjs/common": "^7.1.1",
+    "@nestjs/typeorm": "^7.1.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.5",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "^3.9.3",
+    "validate-commit-msg": "^2.14.0"
+  }
+}
