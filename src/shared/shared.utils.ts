@@ -1,5 +1,6 @@
 import { HttpException } from '@nestjs/common';
 import _ from 'lodash';
+import path from 'path';
 import { BusinessException } from '../exception';
 import { ENVIRONMENT_ENUM, HTTP_STATUS_CODE_ENUM } from './enums';
 import { IResult } from './interfaces';
@@ -19,6 +20,14 @@ export const isQuality = () =>
 export const isProduction = () =>
   process.env.ENVIRONMENT &&
   process.env.ENVIRONMENT.toUpperCase() === ENVIRONMENT_ENUM.PRODUCTION.toUpperCase();
+
+export const getPath = (...paths: string[]) => {
+  return path.join(__dirname, ...paths);
+};
+
+export const getRootPath = (...paths: string[]) => {
+  return path.join(process.cwd(), ...paths);
+};
 
 export function createResult(error?: Error | HttpException): IResult;
 export function createResult(error?: Error | HttpException, code?: number): IResult;
