@@ -313,7 +313,7 @@ var SoftDeleteQueryBuilder = /** @class */ (function (_super) {
         var metadata = this.expressionMap.mainAlias.hasMetadata ? this.expressionMap.mainAlias.metadata : undefined;
         if (!metadata)
             throw new Error("Cannot get entity metadata for the given alias \"" + this.expressionMap.mainAlias + "\"");
-        if (!metadata.deleteDateColumn && !metadata.deleteColumn) {
+        if (!metadata.deleteDateColumn || !metadata.deleteColumn) {
             throw new MissingDeleteDateColumnError_1.MissingDeleteDateColumnError(metadata);
         }
         // prepare columns and values to be updated
@@ -376,13 +376,13 @@ var SoftDeleteQueryBuilder = /** @class */ (function (_super) {
         if (Object.keys(orderBys).length > 0)
             return " ORDER BY " + Object.keys(orderBys)
                 .map(function (columnName) {
-                    if (typeof orderBys[columnName] === "string") {
-                        return _this.replacePropertyNames(columnName) + " " + orderBys[columnName];
-                    }
-                    else {
-                        return _this.replacePropertyNames(columnName) + " " + orderBys[columnName].order + " " + orderBys[columnName].nulls;
-                    }
-                })
+                if (typeof orderBys[columnName] === "string") {
+                    return _this.replacePropertyNames(columnName) + " " + orderBys[columnName];
+                }
+                else {
+                    return _this.replacePropertyNames(columnName) + " " + orderBys[columnName].order + " " + orderBys[columnName].nulls;
+                }
+            })
                 .join(", ");
         return "";
     };

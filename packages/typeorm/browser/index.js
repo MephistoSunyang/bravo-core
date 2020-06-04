@@ -102,7 +102,7 @@ export { Brackets } from "./query-builder/Brackets";
 export { InsertResult } from "./query-builder/result/InsertResult";
 export { UpdateResult } from "./query-builder/result/UpdateResult";
 export { DeleteResult } from "./query-builder/result/DeleteResult";
-export { EntityManager } from "./entity-manager/EntityManager";
+// export {EntityManager} from "./entity-manager/EntityManager";
 export { MongoEntityManager } from "./entity-manager/MongoEntityManager";
 export { Migration } from "./migration/Migration";
 export { MigrationExecutor } from "./migration/MigrationExecutor";
