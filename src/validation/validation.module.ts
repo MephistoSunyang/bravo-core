@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ValidatorPipe } from './pipes';
+import { ValidationPipe } from './pipes';
 
-const pipes = [ValidatorPipe];
+const pipes = [ValidationPipe];
 const services = [...pipes];
 
 @Module({
   providers: [...services],
 })
-export class ValidatorModule {}
+export class ValidationModule {}

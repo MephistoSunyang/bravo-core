@@ -4,7 +4,7 @@ import { validate } from 'class-validator';
 import { Logger } from '../../logger';
 
 @Injectable()
-export class ValidatorPipe implements PipeTransform {
+export class ValidationPipe implements PipeTransform {
   private toValidate(metatype: Function): boolean {
     const types: Function[] = [String, Boolean, Number, Array, Object];
     return !types.includes(metatype);
