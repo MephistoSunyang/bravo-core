@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ExceptionLogInterceptor, ResultInterceptor } from './interceptors';
 
 const interceptors = [ExceptionLogInterceptor, ResultInterceptor];
-const services = [...interceptors];
+const providers = [...interceptors];
 
 @Module({
-  providers: [...services],
+  providers,
 })
 export class InterceptorModule {}

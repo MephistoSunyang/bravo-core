@@ -10,11 +10,12 @@ export class RepositoryModule {
   public static forFeature(entities: Function[]): DynamicModule {
     const modules = [TypeOrmModule.forFeature([AuditLogEntity, ...entities])];
     const services = [AuditLogService, ...getRepositoryServiceProviders(entities)];
+    const providers = [...services];
     return {
       module: RepositoryModule,
       imports: [...modules],
-      providers: [...services],
-      exports: [...services],
+      providers,
+      exports: [...providers],
     };
   }
 }
