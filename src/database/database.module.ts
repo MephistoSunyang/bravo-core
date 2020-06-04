@@ -12,7 +12,7 @@ export class DataBaseModule implements OnModuleInit {
 
   public static forRoot(options: TypeOrmModuleOptions): DynamicModule {
     this.synchronize = options.synchronize || false;
-    const modules = [TypeOrmModule.forRoot(options)];
+    const modules = [TypeOrmModule.forRoot(_.extend(options, { synchronize: false }))];
     return {
       module: DataBaseModule,
       imports: [...modules],
