@@ -14,7 +14,10 @@ export class ValidationPipe implements PipeTransform {
     if (!metatype || !this.toValidate(metatype)) {
       return value;
     }
-    const json = plainToClass(metatype, value);
+    const json = plainToClass(metatype, value, {
+      strategy: 'excludeAll',
+      enableCircularCheck: true,
+    });
     const errors = await validate(json);
     if (errors.length > 0) {
       Logger.error(errors.toString(), 'ValidatorModule ValidatorPipe');
