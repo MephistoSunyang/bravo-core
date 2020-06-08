@@ -22,7 +22,7 @@ export const isProduction = () =>
   process.env.ENVIRONMENT.toUpperCase() === ENVIRONMENT_ENUM.PRODUCTION.toUpperCase();
 
 export const getPath = (...paths: string[]) => {
-  return path.join(__dirname, ...paths);
+  return getRootPath('server', ...paths);
 };
 
 export const getRootPath = (...paths: string[]) => {
