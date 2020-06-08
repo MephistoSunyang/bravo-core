@@ -4,7 +4,7 @@ import { validate } from 'class-validator';
 import { Logger } from '../../logger';
 
 @Injectable()
-export class ValidationPipe implements PipeTransform {
+export class ValidatorPipe implements PipeTransform {
   private toValidate(metatype: Function): boolean {
     const types: Function[] = [String, Boolean, Number, Array, Object];
     return !types.includes(metatype);
@@ -17,6 +17,7 @@ export class ValidationPipe implements PipeTransform {
     const json = plainToClass(metatype, value, {
       strategy: 'excludeAll',
       enableCircularCheck: true,
+      enableImplicitConversion: true,
     });
     const errors = await validate(json);
     if (errors.length > 0) {
