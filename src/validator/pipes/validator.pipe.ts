@@ -21,7 +21,7 @@ export class ValidatorPipe implements PipeTransform {
     });
     const errors = await validate(json);
     if (errors.length > 0) {
-      Logger.error(errors.toString(), 'ValidatorModule ValidatorPipe');
+      Logger.error(errors.toString(), 'ValidatorModule ValidatorPipe Error');
       throw new BadRequestException('validation failed!');
     }
     return value;

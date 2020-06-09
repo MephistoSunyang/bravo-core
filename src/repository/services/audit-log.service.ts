@@ -69,7 +69,7 @@ export class AuditLogService<Entity extends ObjectLiteral> {
       this.auditLogRepository.save(auditLogModels, { chunk: 200 });
     } catch (error) {
       Logger.log(auditLogModels, 'RepositoryModule AuditLogService');
-      Logger.error((error as Error).message, 'RepositoryModule AuditLogService');
+      Logger.error((error as Error).message, 'RepositoryModule AuditLogService Error');
     }
   }
 }
