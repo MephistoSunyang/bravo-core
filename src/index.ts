@@ -5,5 +5,4 @@ export * from './logger';
 export * from './middleware';
 export * from './repository';
 export * from './shared';
-export * from './validator';
 export * from './core.module';
