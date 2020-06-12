@@ -57,3 +57,7 @@ export function createResult(
   };
   return result;
 }
+
+export function getErrorMessage(error: Error) {
+  return `${error.name}\n${error.message}\n${error.stack}`;
+}
