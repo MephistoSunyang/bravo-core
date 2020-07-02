@@ -27,6 +27,7 @@ export class AuditLogService<Entity extends ObjectLiteral> {
       this.auditLogRepository.create({
         schemaName,
         tableName,
+        tableId: entity.id,
         action,
         content: contentResolver(entity),
         createdUserId,

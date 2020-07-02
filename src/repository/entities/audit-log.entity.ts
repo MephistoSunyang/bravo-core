@@ -12,6 +12,9 @@ export class AuditLogEntity {
   @Column('varchar')
   public tableName: string;
 
+  @Column('int')
+  public tableId: string;
+
   @Column('varchar')
   public action: AUDIT_LOG_ACTION_ENUM;
 
