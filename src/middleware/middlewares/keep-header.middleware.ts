@@ -6,7 +6,7 @@ import { IRequest, IResponse } from '../../shared';
 export class KeepHeaderMiddleware implements NestMiddleware {
   public async use(request: IRequest, response: IResponse, next: () => void): Promise<void> {
     _.forIn(request.headers, (header, value) => {
-      if (value.substr(0, 2) === 'ng-') {
+      if (value.substr(0, 2) === 'x-') {
         response.setHeader(_.map(value.split('-'), _.capitalize).join('-'), _.toString(header));
       }
     });
