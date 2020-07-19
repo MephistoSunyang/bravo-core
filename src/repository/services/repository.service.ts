@@ -115,7 +115,7 @@ export class RepositoryService<Entity extends ObjectLiteral> {
   }
 
   public async insert(partialModel: DeepPartial<Entity>, options?: SaveOptions): Promise<Entity> {
-    const entity = await this.repository.save(partialModel, options);
+    const entity = await this.repository.save(this.create(partialModel), options);
     this.auditLogService.insert(this.metadata, AUDIT_LOG_ACTION_ENUM.CREATE, entity);
     return entity;
   }
@@ -127,7 +127,7 @@ export class RepositoryService<Entity extends ObjectLiteral> {
     if (partialModels.length === 0) {
       return [];
     }
-    const entities = await this.repository.save(partialModels, options);
+    const entities = await this.repository.save(this.create(partialModels), options);
     this.auditLogService.insert(this.metadata, AUDIT_LOG_ACTION_ENUM.CREATE, entities);
     return entities;
   }
@@ -222,6 +222,7 @@ export class RepositoryService<Entity extends ObjectLiteral> {
     if (!entity) {
       return;
     }
+    const cloneEntity = _.clone(entity);
     let deletedEntity: Entity;
     if (this.isSoftDelete) {
       const model = this.merge(entity, { [this.softDeleteField]: true } as any);
@@ -229,7 +230,7 @@ export class RepositoryService<Entity extends ObjectLiteral> {
       this.auditLogService.insert(this.metadata, AUDIT_LOG_ACTION_ENUM.DELETE, deletedEntity);
     } else {
       deletedEntity = await this.repository.remove(entity, options);
-      this.auditLogService.insert(this.metadata, AUDIT_LOG_ACTION_ENUM.DELETE, entity);
+      this.auditLogService.insert(this.metadata, AUDIT_LOG_ACTION_ENUM.DELETE, cloneEntity);
     }
     return deletedEntity;
   }
