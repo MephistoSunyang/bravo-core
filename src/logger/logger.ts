@@ -12,18 +12,18 @@ export class Logger extends NestLogger implements LoggerService {
   }
 
   public static log(message: any, context = 'Nest Application Log'): void {
-    logger(`[${context}]`).info(message);
+    logger(`[${context} Log]`).info(message);
     super.log(message, context);
   }
 
   public static warn(message: any, context = 'Nest Application Warn'): void {
-    logger(`[${context}]`).warn(message);
+    logger(`[${context} Warn]`).warn(message);
     super.warn(message, context);
   }
 
   public static error(message: any, context = 'Nest Application Error', trace = ''): void {
     const errorMessage = message instanceof Error ? getErrorMessage(message) : message;
-    logger(`[${context}]`).error(errorMessage, trace);
+    logger(`[${context} Error]`).error(errorMessage, trace);
     super.error(errorMessage, trace, context);
   }
 }

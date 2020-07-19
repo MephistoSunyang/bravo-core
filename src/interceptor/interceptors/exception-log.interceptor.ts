@@ -23,11 +23,7 @@ export class ExceptionLogInterceptor implements NestInterceptor {
             message += `\nbody: ${JSON.stringify(request.body)}`;
           }
           Logger.log(message, 'InterceptorModule ExceptionLogInterceptor');
-          Logger.error(
-            error.message,
-            'InterceptorModule ExceptionLogInterceptor Error',
-            error.stack,
-          );
+          Logger.error(error.message, 'InterceptorModule ExceptionLogInterceptor', error.stack);
         }
         return throwError(error);
       }),
