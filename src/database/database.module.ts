@@ -27,6 +27,7 @@ export class DataBaseModule implements OnModuleInit {
       const schemas = _.chain(entityMetadatas)
         .map('schema')
         .compact()
+        .uniq()
         .difference(databaseSchemas)
         .value();
       await Promise.all(schemas.map((schema) => queryRunner.createSchema(schema)));
