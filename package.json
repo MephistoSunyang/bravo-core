@@ -30,7 +30,7 @@
     "express": "^4.17.1",
     "express-http-context": "^1.2.3",
     "lodash": "^4.17.15",
-    "log4js": "^3.0.6",
+    "log4js": "^6.4.0",
     "mssql": "^6.2.0",
     "rxjs": "^6.5.5",
     "typeorm": "file:packages/typeorm"
